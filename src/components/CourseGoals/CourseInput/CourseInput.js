@@ -1,34 +1,34 @@
 import React, { useState } from 'react';
 import Button from '../../UI/Button/Button';
-// import './CourseInput.css';
-import styled from 'styled-components';
+// import styled from 'styled-components';
+import styles from './CourseInput.module.css';
 
-const FormControl = styled.div`
-  margin: 0.5rem 0;
+// const FormControl = styled.div`
+//   margin: 0.5rem 0;
 
-  & label {
-    color: ${(props) => (props.invalid ? 'red' : 'black')};
-    font-weight: bold;
-    display: block;
-    margin-bottom: 0.5rem;
-  }
+//   & label {
+//     color: ${(props) => (props.invalid ? 'red' : 'black')};
+//     font-weight: bold;
+//     display: block;
+//     margin-bottom: 0.5rem;
+//   }
 
-  & input {
-    display: block;
-    width: 100%;
-    border: 1px solid ${(props) => (props.invalid ? 'red' : '#ccc')};
-    background-color: ${(props) => (props.invalid ? '#ffd7d7' : 'transparent')};
-    font: inherit;
-    line-height: 1.5rem;
-    padding: 0 0.25rem;
-  }
+//   & input {
+//     display: block;
+//     width: 100%;
+//     border: 1px solid ${(props) => (props.invalid ? 'red' : '#ccc')};
+//     background-color: ${(props) => (props.invalid ? '#ffd7d7' : 'transparent')};
+//     font: inherit;
+//     line-height: 1.5rem;
+//     padding: 0 0.25rem;
+//   }
 
-  & input:focus {
-    outline: none;
-    background: #fad0ec;
-    border-color: #8b005d;
-  }
-`;
+//   & input:focus {
+//     outline: none;
+//     background: #fad0ec;
+//     border-color: #8b005d;
+//   }
+// `;
 
 const CourseInput = (props) => {
   const [enteredValue, setEnteredValue] = useState('');
@@ -56,21 +56,34 @@ const CourseInput = (props) => {
   };
 
   return (
+    // <form onSubmit={formSubmitHandler}>
+    //   <FormControl invalid={!isValid}>
+    //     {/* <div className={`form-control ${!isValid ? 'invalid' : ' '}`}> ---video99 */}
+    //     {/* <label style={{ color: !isValid ? 'red' : 'black' }}>Course Goal</label> ---video98 */}
+    //     <label>Course Goal</label>
+    //     {/* <input
+    //       style={{
+    //         borderColor: !isValid ? 'red' : 'blue',
+    //         background: !isValid ? 'salmon' : 'transparent',
+    //       }}
+    //       type="text"
+    //       onChange={goalInputChangeHandler}
+    //     /> ---video99*/}
+    //     <input type='text' onChange={goalInputChangeHandler} />
+    //   </FormControl>
+    //   <Button type='submit'>Add Goal</Button>
+    // </form>
+
+    //----- Video103 using CSS Modules:------
+
     <form onSubmit={formSubmitHandler}>
-      <FormControl invalid={!isValid}>
-        {/* <div className={`form-control ${!isValid ? 'invalid' : ' '}`}> ---video99 */}
-        {/* <label style={{ color: !isValid ? 'red' : 'black' }}>Course Goal</label> ---video98 */}
+      {/* form-control name ma '-' read gardaina CSS modules le  */}
+      <div
+        className={`${styles['form-control']}  ${!isValid && styles.invalid}`}
+      >
         <label>Course Goal</label>
-        {/* <input
-          style={{
-            borderColor: !isValid ? 'red' : 'blue',
-            background: !isValid ? 'salmon' : 'transparent',
-          }}
-          type="text"
-          onChange={goalInputChangeHandler}
-        /> ---video99*/}
         <input type='text' onChange={goalInputChangeHandler} />
-      </FormControl>
+      </div>
       <Button type='submit'>Add Goal</Button>
     </form>
   );
